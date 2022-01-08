@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
         $adminUser = new User();
         $adminUser->name='Admin';
         $adminUser->email='admin@iq-valuacion.com';
-        $adminUser->telefono='6141234567';
+//        $adminUser->telefono='6141234567';
         $adminUser->password =Hash::make('agt123');
         $adminUser->save();
         // for ($i=1; $i <= 100 ; $i++) { 
