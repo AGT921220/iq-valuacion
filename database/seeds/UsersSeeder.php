@@ -16,18 +16,22 @@ class UsersSeeder extends Seeder
     {
 
         $adminUser = new User();
-        $adminUser->name='Admin';
-        $adminUser->email='admin@iq-valuacion.com';
-//        $adminUser->telefono='6141234567';
-        $adminUser->password =Hash::make('agt123');
+        $adminUser->name='Pedro';
+        $adminUser->email='pedropapa@gmail.com';
+        $adminUser->lastname='perez';
+        $adminUser->lastname_mother='madrigal';
+        $adminUser->business='prueba';
+        //$adminUser->phone='';
+        $adminUser->password =Hash::make('');
         $adminUser->save();
-        // for ($i=1; $i <= 100 ; $i++) { 
-        //     $user = new User();
-        //     $user->name ='Name'.$i;
-        //     $user->email='email'.$i.'@test.com';
-        //     $user->password =Hash::make('Password_capi_'.$i);
+        /*for ($i=1; $i <= 100 ; $i++) { 
+               $user = new User();
+               $user->name ='name'.$i;
+               $user->email='email'.$i.'@test.com';
+               $user->phone='';
+               $user->password =Hash::make('Password_capi_'.$i);
         //     $user->fecha_nacimiento=Carbon::today()->subDays(rand(0, 10000));
-        //     $user->save();
+               $user->save();
         //     $domicilio = new Domicilio();
         //     $domicilio->user_id =$i;
         //     $domicilio->domicilio='Calle '.$i;
@@ -36,7 +40,9 @@ class UsersSeeder extends Seeder
         //     $domicilio->ciudad='Chihuahua';
         //     $domicilio->save();
         // }
-
+*/
 
     }
+ 
+
 }
