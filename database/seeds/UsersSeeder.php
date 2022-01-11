@@ -16,12 +16,12 @@ class UsersSeeder extends Seeder
     {
 
         $adminUser = new User();
-        $adminUser->name='Pedro';
-        $adminUser->email='pedropapa@gmail.com';
-        $adminUser->lastname='perez';
-        $adminUser->lastname_mother='madrigal';
-        $adminUser->business='prueba';
-        //$adminUser->phone='';
+        $adminUser->name='Admin';
+        $adminUser->email='admin@iq.com';
+        $adminUser->lastname='Admin';
+        $adminUser->lastname_mother='Admin';
+        $adminUser->business='Admin';
+        $adminUser->user_profile='/images/profile-empty.png';
         $adminUser->password =Hash::make('agt123');
         $adminUser->save();
         /*for ($i=1; $i <= 100 ; $i++) { 

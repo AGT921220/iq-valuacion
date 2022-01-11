@@ -13,7 +13,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/dist/css/AdminLTE.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
@@ -35,23 +35,13 @@
 <div class="wrapper">
 
   <header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>I</b>Q</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>IQ</b>Inmobiliario</span>
-    </a>
+
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
+{{-- 
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -128,7 +118,6 @@
               <li class="footer"><a href="#">See All Messages</a></li>
             </ul>
           </li>
-          <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
@@ -170,7 +159,6 @@
               <li class="footer"><a href="#">View all</a></li>
             </ul>
           </li>
-          <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
@@ -247,7 +235,8 @@
                 <a href="#">View all tasks</a>
               </li>
             </ul>
-          </li>
+          </li> --}}
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -261,22 +250,7 @@
 
                 <p>{{ Auth::user()->name }}</p>
               </li>
-              <!-- Menu Body -->
-              <!--
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-              </li>
-            -->
+
 
               <!-- Menu Footer-->
               <li class="user-footer">
@@ -306,80 +280,8 @@
       </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="{{ auth()->user()->user_profile }}" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>{{ Auth::user()->name }} </p>
-        </div>
-      </div>
-      <!-- search form 
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">Menú</li>
-        <li class="active treeview" style="display:none;">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Avaluos</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="/dashboard/avaluos/nuevo"><i class="fa fa-circle-o"></i>Solicitar</a></li>
-            <li><a href="/dashboard/avaluos"><i class="fa fa-circle-o"></i>En proceso</a></li>
-          </ul>
-        </li>
 
-
-        {{-- <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Propiedades</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="/dashboard/propiedades/nueva"><i class="fa fa-circle-o"></i>Agregar Propiedad</a></li>
-            <li><a href="/dashboard/propiedades"><i class="fa fa-circle-o"></i>Ver Propiedades</a></li>
-          </ul>
-        </li>
-
-
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cotizaciones</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="/dashboard/cotizaciones"><i class="fa fa-circle-o"></i>Ver Cotizaciones</a></li>
-          </ul>
-        </li> --}}
-
-
-      </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
-
-
+  
 
 
 
@@ -397,10 +299,7 @@
       
 
 
-                <h1>Dashboard <small>Panel de control</small></h1>
-                <ol class="breadcrumb">
 
-                </ol>
                 </section>
 
     <!-- Main content -->
@@ -420,7 +319,7 @@
     <div class="pull-right hidden-xs">
 
     </div>
-    <strong>Copyright &copy; 2021 <a>IQ Valuación</a>.</strong>  </footer>
+    <strong>Copyright &copy; 2022 <a>IQ Valuación</a>.</strong>  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark" style="display: none;">
@@ -553,7 +452,7 @@
 <!-- FastClick -->
 <script src="/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="/dist/js/adminlte.min.js"></script>
+<script src="/dist/js/adminlte.js"></script>
 
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" charset="utf-8"></script>
 
