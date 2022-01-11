@@ -22,7 +22,7 @@ class UsersSeeder extends Seeder
         $adminUser->lastname_mother='madrigal';
         $adminUser->business='prueba';
         //$adminUser->phone='';
-        $adminUser->password =Hash::make('');
+        $adminUser->password =Hash::make('agt123');
         $adminUser->save();
         /*for ($i=1; $i <= 100 ; $i++) { 
                $user = new User();
