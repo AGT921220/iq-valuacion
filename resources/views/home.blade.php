@@ -2,6 +2,6 @@
 
 @section('content')
 
-<h1>Bienvenido</h1>
+<h1>Hola {{auth()->user()->name}}</h1>
 
 @endsection
