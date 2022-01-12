@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cotizacion;
+use App\User;
 use Illuminate\Http\Request;
 
 class CotizacionesController extends Controller
@@ -13,6 +14,8 @@ class CotizacionesController extends Controller
 
     	$cotizaciones = Cotizacion::all();
 
-        return view('dashboard.cotizaciones.lista',compact('cotizaciones'));
+        $users = User::all();
+
+        return view('dashboard.cotizaciones.lista', compact('cotizaciones'));
     }
 }
