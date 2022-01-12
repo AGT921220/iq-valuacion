@@ -21,7 +21,7 @@ class UsersShowRequest extends FormRequest
 
     public function authorize()
     {
-        if ($this->user->type=='encargado') {
+        if ($this->user->type==User::ADMIN_ROLE) {
             return true;
         }
         

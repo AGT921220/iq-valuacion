@@ -15,7 +15,9 @@ class UsersController extends Controller
     public function index()
     {
         app(UsersShowRequest::class);        
-        return 1;
+
+        $users = User::where('type', '!=', User::ADMIN_ROLE)->get();
+
     }
 
     public function perfil(){
