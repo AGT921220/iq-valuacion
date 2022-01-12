@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Requests;
+namespace App\Http\Requests\User;
 
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UsersShowRequest extends FormRequest
+class UserIndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,8 @@ class UsersShowRequest extends FormRequest
      */
 
     private $user;
-    public function __construct(User $user)
+
+    public function __construct()
     {
         $this->user = auth()->user();
     }
@@ -24,7 +25,7 @@ class UsersShowRequest extends FormRequest
         if ($this->user->type==User::ADMIN_ROLE) {
             return true;
         }
-        
+       
         return false;
     }
 
