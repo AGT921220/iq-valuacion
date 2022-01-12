@@ -21,6 +21,7 @@ class UsersSeeder extends Seeder
         $adminUser->lastname='Admin';
         $adminUser->lastname_mother='Admin';
         $adminUser->business='Admin';
+        $adminUser->type='encargado';
         $adminUser->user_profile='/images/profile-empty.png';
         $adminUser->password =Hash::make('agt123');
         $adminUser->save();
