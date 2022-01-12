@@ -1,0 +1,15 @@
+index()
+create()
+store(Request $request)
+show($id)
+edit($id)
+update(Request $request, $id)
+destroy($id)
+
+index-> GET Te muestra el listado
+create-> GET Te muestra la vista para crear
+store-> POST Ruuuuuuta para crear(Cuando le das submit al formulario).
+show-> GET Te muestra un slo registro.
+edit-> GET Te muestra la vista para editar.
+update-> PUT Ruta para actualizar (Cuando le das sub mit al form)
+destroy-> DELETE Eliminar

@@ -653,6 +653,8 @@ a:focus {
   }
   .sidebar-mini.sidebar-collapse .main-header .navbar {
     margin-left: 50px;
+    margin-left: 0px !important;
+
   }
 }
 @media (min-width: 768px) {
