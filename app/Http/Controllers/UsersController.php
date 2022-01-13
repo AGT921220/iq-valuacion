@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\User\UserIndexRequest;s
+use App\Http\Requests\User\IndexUserRequest;
+use App\Http\Requests\User\ShowUserRequest;
 use App\User;
 
 class UsersController extends Controller
@@ -11,19 +12,23 @@ class UsersController extends Controller
     
     public function index()
     {
-        app(UserIndexRequest::class);        
-
+        app(IndexUserRequest::class);        
         $users = User::where('type', '!=', User::ADMIN_ROLE)->get();
-        return 'users';
-        return $users;
+        return view('dashboard.users.index', compact('users'));
     }
 
     public function show($id)
     {
-//        app(UserShowRequest::class);        
-
+        app(ShowUserRequest::class);        
         $user = User::findOrFail($id);
-        return 'user';
+        return view('dashboard.users.show', compact('user'));
+    }
+
+    public function edit($id)
+    {
+        app(ShowUserRequest::class);        
+        $user = User::findOrFail($id);
+        return view('dashboard.users.edit', compact('user'));
     }
 
 

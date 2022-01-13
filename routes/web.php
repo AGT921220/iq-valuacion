@@ -36,3 +36,4 @@ Route::get('{locale}', function ($locale) {
 });
 
 
+

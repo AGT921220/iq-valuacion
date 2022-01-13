@@ -47,7 +47,27 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-        return redirect('/home')->with('error', $exception->getMessage());
+        //        dd($exception);
+        //Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+        switch (get_class($exception)) {
+            case 'Illuminate\Auth\Access\AuthorizationException':
+                return redirect('/home')->with('error', $exception->getMessage());
+                break;
+
+            case 'Illuminate\Database\Eloquent\ModelNotFoundException':
+            case 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException':
+                return back()->with('error', 'No existe el recurso');
+                break;
+
+
+
+            default:
+            return parent::render($request, $exception);
+
+                return back()->with('error', 'No existe el recurso o la ruta');
+                break;
+        }
+
 
         return parent::render($request, $exception);
     }

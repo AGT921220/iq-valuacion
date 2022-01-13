@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('email',80)->unique();
             $table->string('phone',50)->nullable();
             $table->string('user_profile')->nullable();
-            $table->string('type')->default('client');
+            $table->string('type')->default(User::CLIENT_ROLE);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
