@@ -18,8 +18,8 @@ class UsersSeeder extends Seeder
         $adminUser = new User();
         $adminUser->name='Admin';
         $adminUser->email='admin@iq.com';
-        $adminUser->lastname='Admin';
-        $adminUser->lastname_mother='Admin';
+        $adminUser->paternal_surname='Admin';
+        $adminUser->maternal_surname='Admin';
         $adminUser->business='Admin';
         $adminUser->type=User::ADMIN_ROLE;
         $adminUser->user_profile='/images/profile-empty.png';

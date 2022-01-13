@@ -1,6 +1,7 @@
 /vendor/
 node_modules/
 build/
+public/images/
 npm-debug.log
 yarn-error.log
 

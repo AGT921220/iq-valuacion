@@ -49,17 +49,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
-
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'lastname' =>['required', 'string','max:255'],
-//            'lastname_mother' =>['required', 'string','max:255'],
+            'paternal_surname' =>['required', 'string','max:255'],
+            'maternal_surname' =>['required', 'string','max:255'],
             'password' => ['required', 'string', 'min:3'],
             'user_profile' => ['mimes:jpeg,png,jpg,gif,svg|max:10000'],
-            'telefono'=>['required','string'],
-            'client_type'=>['required','string'],
+            'phone'=>['required','string'],
 
         ]);
     }
@@ -71,10 +68,10 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
+
     {
-
-
           $foto ='/images/profile-empty.png';
+
 
           if(isset($data['user_profile'])){        
             $file = $data['user_profile'];
@@ -83,13 +80,11 @@ class RegisterController extends Controller
            $foto = '/images/profiles/'.$filename;
         }
 
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'type' =>User::CLIENT_ROLE,
-            'telefono' => $data['telefono'],
-            'client_type' => $data['client_type'],            
+            'phone' => $data['phone'],    
             'password' => Hash::make($data['password']),
             'user_profile'=>$foto,
         ]);
