@@ -105,7 +105,7 @@ class UserTest extends TestCase
     }
 
 
-        /**
+    /**
      *@test
      */
     public function canEditUser()
@@ -121,7 +121,7 @@ class UserTest extends TestCase
         $this->assertEquals($userResponse->id, $otherUser->id);
     }
 
-            /**
+    /**
      *@test
      */
     public function cantEditUser()
@@ -132,6 +132,33 @@ class UserTest extends TestCase
         );
         $otherUser = factory(User::class)->create();
         $response = $this->get('/dashboard/usuarios/'.$otherUser->id.'/edit');
+        $response->assertStatus(302);
+    }
+
+
+            /**
+     *@test
+     */
+    public function canCreateUser()
+    {
+        $user = User::where('id', 1)->first();
+        $this->actingAs(
+            $user
+        );
+        $response = $this->get('/dashboard/usuarios/create');
+        $response->assertStatus(200);
+    }
+
+        /**
+     *@test
+     */
+    public function cantCreateUser()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs(
+            $user
+        );
+        $response = $this->get('/dashboard/usuarios/create');
         $response->assertStatus(302);
     }
 

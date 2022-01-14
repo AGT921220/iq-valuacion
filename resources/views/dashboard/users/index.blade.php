@@ -50,10 +50,9 @@
                         </tfoot>
                     </table>
 
-                    {{-- fin card body --}}
                 </div>
 
-                {{-- <a href="{{ route('crear_propiedad') }}" class="btn btn-primary btn-sm">Nueva Propiedad</a> --}}
+                 <a href="/dashboard/usuarios/create" class="btn btn-primary btn-sm">Nuevo Usuario</a> 
             </div>
         </div>
     </div>
