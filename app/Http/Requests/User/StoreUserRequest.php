@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
         if ($this->user->type == User::ADMIN_ROLE) {
             return true;
         }
-
+        
         return false;
     }
 
@@ -62,12 +62,12 @@ class StoreUserRequest extends FormRequest
     {
         $userTypes = User::USER_TYPES;
         $validator->after(function ($validator) use ($userTypes) {
-            if (!$userTypes[$this->input('type')]) {
-                $validator->errors()->add('type', 'El tipo de usuario no es válido.');
+            if (!isset($userTypes[$this->input('type')])) {
+                $validator->errors()->add('type', User::INVALID_TYPE);
             }
 
             if ($this->input('password') !== $this->input('password_confirmation')) {
-                $validator->errors()->add('password', 'Las contraseñas no coinciden.');
+                $validator->errors()->add('password',User::PASSWORDS_NOT_EQUALS);
             }
         });
     }

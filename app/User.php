@@ -34,6 +34,7 @@ class User extends Authenticatable
 
     public const REPEAT_EMAIL = 'El correo está repetido.';
     public const INVALID_TYPE = 'El tipo de usuario no es válido.';
+    public const PASSWORDS_NOT_EQUALS = 'Las contraseñas no coinciden.';
 
     /**
      * The attributes that are mass assignable.
