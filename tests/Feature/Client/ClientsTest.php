@@ -5,7 +5,6 @@ namespace Tests\Feature\Client;
 use App\User;
 use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Test;
 use Tests\TestCase;

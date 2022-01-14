@@ -45,6 +45,7 @@ class UserTest extends TestCase
         $response->assertStatus(200);
         $userResponse = $response->getOriginalContent()->user;
         $this->assertEquals($userResponse->id, $user->id);
+        $this->assertEquals($userResponse->id, $user->id);
     }
 
     /**

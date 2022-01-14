@@ -31,7 +31,6 @@ class ShowUserRequest extends FormRequest
             return true;
         }
 
-
         return false;
     }
 

@@ -11,7 +11,6 @@ class ClientType extends Model
 
     public const CLIENT_TYPES = [
         'Inmobiliaria',
-        'Particular',
         'Brocker',
         'Corredor',
         'Asesor certificado',

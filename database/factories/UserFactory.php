@@ -28,7 +28,7 @@ $factory->define(User::class, function (Faker $faker) {
         'type'=>User::CLIENT_ROLE,
         'password' => function(){
             return Hash::make('agt123');
-        }, // password
+        },
         'remember_token' => Str::random(10),
     ];
 
