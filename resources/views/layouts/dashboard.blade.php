@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="/dist/css/AdminLTE.css">
-  <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="/dist/css/skins/_all-skins.css">
   {{-- <link rel="stylesheet" href="/bower_components/morris.js/morris.css"> --}}
   <link rel="stylesheet" href="/bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
@@ -30,12 +30,12 @@
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ auth()->user()->user_profile }}" class="user-image" alt="User Image">
+                <img src="{{ (auth()->user()->user_profile) ? auth()->user()->user_profile:'/images/profile-empty.png' }}" class="user-image" alt="User Image">
                 <span class="hidden-xs">{{ Auth::user()->name }} </span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
-                  <img src="{{ auth()->user()->user_profile }}" class="img-circle" alt="User Image">
+                  <img src="{{ (auth()->user()->user_profile) ? auth()->user()->user_profile:'/images/profile-empty.png' }}" class="user-image" alt="User Image">
                   <p>{{ Auth::user()->name }}</p>
                 </li>
 

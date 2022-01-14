@@ -27,7 +27,7 @@
                                 <td>{{ $item->email }}</td>
 
                                 <td>
-                                    <img style="width:50px; height:50px" src="{{ asset($item->user_profile) }}">
+                                    <img style="width:50px; height:50px" src="{{ asset(($item->user_profile)?$item->user_profile:'/images/profile-empty.png') }}">
                                 </td>
 
                                 <td class="actions_table">

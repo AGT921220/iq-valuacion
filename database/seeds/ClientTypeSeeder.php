@@ -15,15 +15,7 @@ class ClientTypeSeeder extends Seeder
     public function run()
     {
 
-        $clientTypes = [
-            'Inmobiliaria',
-            'Particular',
-            'Brocker',
-            'Corredor',
-            'Asesor certificado',
-            'Particular'
-        ];
-        foreach ($clientTypes as $clientType) {
+        foreach (ClientType::CLIENT_TYPES as $clientType) {
             $client = new ClientType();
             $client->name = $clientType;
             $client->save();
