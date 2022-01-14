@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="paternal_surname" class="col-md-4 col-form-label text-md-right">Primer Apellido</label>
+                            <label for="paternal_surname" class="col-md-4 col-form-label text-md-right">Apellido Paterno</label>
 
                             <div class="col-md-6">
                                 <input id="paternal_surname" type="text" class="form-control @error('paternal_surname') is-invalid @enderror" name="paternal_surname" value="{{ old('paternal_surname') }}" required autocomplete="paternal_surname" autofocus>
@@ -38,6 +38,22 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="maternal_surname" class="col-md-4 col-form-label text-md-right">Apellido Materno</label>
+
+                            <div class="col-md-6">
+                                <input id="maternal_surname" type="text" class="form-control @error('maternal_surname') is-invalid @enderror" name="maternal_surname" value="{{ old('maternal_surname') }}" required autocomplete="maternal_surname" autofocus>
+
+                                @error('maternal_surname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Correo</label>
@@ -55,12 +71,12 @@
 
 
                         <div class="form-group row">
-                            <label for="telefono" class="col-md-4 col-form-label text-md-right">Teléfono</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">Teléfono</label>
 
                             <div class="col-md-6">
-                                <input id="telefono" type="number" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autocomplete="email">
+                                <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="email">
 
-                                @error('telefono')
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

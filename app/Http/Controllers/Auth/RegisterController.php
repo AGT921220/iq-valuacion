@@ -49,6 +49,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+//        dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -57,7 +58,6 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:3'],
             'user_profile' => ['mimes:jpeg,png,jpg,gif,svg|max:10000'],
             'phone'=>['required','string'],
-
         ]);
     }
 
@@ -68,8 +68,8 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
+    {   
 
-    {
           $foto ='/images/profile-empty.png';
 
 

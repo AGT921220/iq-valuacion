@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\EditUserRequest;
 use App\Http\Requests\User\IndexUserRequest;
 use App\Http\Requests\User\ShowUserRequest;
 use App\User;
@@ -26,19 +27,8 @@ class UsersController extends Controller
 
     public function edit($id)
     {
-        app(ShowUserRequest::class);        
+        app(EditUserRequest::class);        
         $user = User::findOrFail($id);
         return view('dashboard.users.edit', compact('user'));
     }
-
-
-    public function perfil(){
-
-        $usuario = User::findOrFail(auth()->user()->id);
-
-        return view('dashboard.users.profile',compact('usuario'));
-    }
-
-
-
 }

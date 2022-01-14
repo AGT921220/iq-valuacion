@@ -31,7 +31,7 @@
                                 </td>
 
                                 <td class="actions_table">
-                                     <a href="/dashboard/usuarios/{{$item->id}}"
+                                     <a href="/dashboard/usuarios/{{$item->id}}/edit"
                                         class="btn btn-warning">Editar</a>
 
                                 </td>

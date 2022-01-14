@@ -22,10 +22,16 @@ class ShowUserRequest extends FormRequest
 
     public function authorize()
     {
-        if ($this->user->type==User::ADMIN_ROLE) {
+
+        if ($this->user->type == User::ADMIN_ROLE) {
             return true;
         }
-       
+
+        if (request()->route('usuario') == auth()->user()->id) {
+            return true;
+        }
+
+
         return false;
     }
 

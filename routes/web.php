@@ -12,11 +12,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//PERFIL DE USUARIO
-Route::get('/dashboard/perfil', 'UsersController@perfil');
-
-
-
 Route::prefix('dashboard')//Usa un prefijo de ruta
 ->middleware('auth')//Valida que el usuario este logueado
 ->group(function () {//Agrupa todas las rutas

@@ -41,7 +41,7 @@
 
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="/dashboard/perfil" class="btn btn-default btn-flat">Perfil</a>
+                    <a href="/dashboard/usuarios/{{auth()->user()->id}}" class="btn btn-default btn-flat">Perfil</a>
                   </div>
                   <div class="pull-right">
                     <a class="btn btn-default btn-flat" href="{{ route('logout') }}" onclick="event.preventDefault();

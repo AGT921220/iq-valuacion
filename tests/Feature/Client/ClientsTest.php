@@ -58,6 +58,7 @@ class ClientsTest extends TestCase
         $response = $this->callLogin($loginData);
         $response->assertStatus(302);
         $response = $this->get('/login');
+        $response->assertStatus(302);
     }
 
 
@@ -80,7 +81,6 @@ class ClientsTest extends TestCase
         $response = $this->callLogin($loginData);
         $response->assertStatus(422);
         $response = $this->get('/home');
-
     }
 
 
