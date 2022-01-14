@@ -237,7 +237,6 @@ class UserTest extends TestCase
 
         $response = $this->patchJson('/dashboard/usuarios/' . $otherUser->id, $dataToEdit);
         $response->assertStatus(302);
-        
     }
 
 
@@ -252,6 +251,10 @@ class UserTest extends TestCase
         );
         $response = $this->get('/dashboard/usuarios/create');
         $response->assertStatus(200);
+
+
+        $userData = $this->getUserData();
+        $response = $this->post('/dashboard/usuarios', $userData);
     }
 
     /**
@@ -272,5 +275,20 @@ class UserTest extends TestCase
     {
         $users = User::where('type', '!=', User::ADMIN_ROLE)->get();
         $this->assertEquals(count($users), count($usersResponse));
+    }
+
+    private function getUserData(): array
+    {
+        return [
+            'name' => 'Usuario',
+            'paternal_surname' => 'Apellido Paterno',
+            'maternal_surname' => 'Apellido Materno',
+            'business' => 'Empresa',
+            'email' => 'usuario@iq.com',
+            'phone' => '6144950659',
+            'type' => User::PRINTER_ROLE,
+            'password' => 'usuario',
+            'password_confirmation' => 'usuario',
+        ];
     }
 }
