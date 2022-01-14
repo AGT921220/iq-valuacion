@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\DestroyUserRequest;
 use App\Http\Requests\User\EditUserRequest;
 use App\Http\Requests\User\IndexUserRequest;
 use App\Http\Requests\User\ShowUserRequest;
@@ -70,7 +71,7 @@ class UsersController extends Controller
         if ($user->save()) {
             return back()->with('success', User::USER_CREATE_SUCCESSFUL);
         }
-        return back()->with('success', User::USER_CREATE_ERROR);
+        return back()->with('error', User::USER_CREATE_ERROR);
     }
 
     public function update(UpdateUserRequest $request)
@@ -98,7 +99,19 @@ class UsersController extends Controller
         if ($user->save()) {
             return back()->with('success', User::USER_UPDATE_SUCCESSFUL);
         }
-        return back()->with('success', User::USER_UPDATE_ERROR);
+        return back()->with('error', User::USER_UPDATE_ERROR);
+    }
+
+    public function destroy($id)
+    {
+        app(DestroyUserRequest::class);
+
+        $user = User::findOrFail($id);
+
+        if($user->delete()){
+            return back()->with('success', User::USER_CREATE_SUCCESSFUL);
+        }
+        return back()->with('error', User::USER_CREATE_ERROR);
     }
 
 }

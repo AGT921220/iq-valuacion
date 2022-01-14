@@ -34,6 +34,11 @@
                                      <a href="/dashboard/usuarios/{{$item->id}}/edit"
                                         class="btn btn-warning">Editar</a>
 
+                                        <form action="/dashboard/usuarios/{{$item->id}}" class="d-inline" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
                                 </td>
 
                             </tr>

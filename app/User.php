@@ -29,6 +29,11 @@ class User extends Authenticatable
     public const USER_CREATE_ERROR = 'Hubo un error al crear el usuario';
     public const USER_UPDATE_SUCCESSFUL = 'El usuario se actualizó con éxito';
     public const USER_UPDATE_ERROR = 'Hubo un error al editar el usuario';
+    public const USER_DELETE_SUCCESSFUL = 'El usuario se eliminó con éxito';
+    public const USER_DELETE_ERROR = 'Hubo un error al eliminar el usuario';
+
+    public const REPEAT_EMAIL = 'El correo está repetido.';
+    public const INVALID_TYPE = 'El tipo de usuario no es válido.';
 
     /**
      * The attributes that are mass assignable.

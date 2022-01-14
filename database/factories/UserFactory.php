@@ -21,6 +21,9 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
+        'paternal_surname' => $faker->lastName,
+        'maternal_surname' => $faker->lastName,
+        'phone' => $faker->phoneNumber,
         'email_verified_at' => now(),
         'type'=>User::CLIENT_ROLE,
         'password' => function(){

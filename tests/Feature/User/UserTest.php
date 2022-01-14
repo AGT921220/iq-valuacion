@@ -9,8 +9,6 @@ use Tests\TestCase;
 class UserTest extends TestCase
 {
 
-    private const CLIENT_PASSWORD = 'password';
-
     /**
      *@test
      */
@@ -41,7 +39,7 @@ class UserTest extends TestCase
     }
 
 
-        /**
+    /**
      *@test
      */
     public function canShowUserWhenTheUserIsAdmin()
@@ -52,9 +50,9 @@ class UserTest extends TestCase
         );
         $user = factory(User::class)->create();
 
-        $response = $this->get('/dashboard/usuarios/'.$user->id);
-        $response->assertStatus(200);        
-        $userResponse = $response->getOriginalContent()->user;  
+        $response = $this->get('/dashboard/usuarios/' . $user->id);
+        $response->assertStatus(200);
+        $userResponse = $response->getOriginalContent()->user;
         $this->assertEquals($userResponse->id, $user->id);
     }
 
@@ -67,9 +65,9 @@ class UserTest extends TestCase
         $this->actingAs(
             $user
         );
-        $response = $this->get('/dashboard/usuarios/'.$user->id);
-        $response->assertStatus(200);        
-        $userResponse = $response->getOriginalContent()->user;  
+        $response = $this->get('/dashboard/usuarios/' . $user->id);
+        $response->assertStatus(200);
+        $userResponse = $response->getOriginalContent()->user;
         $this->assertEquals($userResponse->id, $user->id);
     }
 
@@ -83,11 +81,11 @@ class UserTest extends TestCase
             $user
         );
         $otherUser = factory(User::class)->create();
-        $response = $this->get('/dashboard/usuarios/'.$otherUser->id);
-        $response->assertStatus(302);        
+        $response = $this->get('/dashboard/usuarios/' . $otherUser->id);
+        $response->assertStatus(302);
     }
 
-        /**
+    /**
      *@test
      */
     public function cantShowUserIfNotExist()
@@ -97,11 +95,10 @@ class UserTest extends TestCase
             $user
         );
         $user = factory(User::class)->create();
-        $userId = $user->id+1;
+        $userId = $user->id + 1;
 
-        $response = $this->get('/dashboard/usuarios/'.$userId);
-        $response->assertStatus(302);        
- 
+        $response = $this->get('/dashboard/usuarios/' . $userId);
+        $response->assertStatus(302);
     }
 
 
@@ -114,11 +111,21 @@ class UserTest extends TestCase
         $this->actingAs(
             $user
         );
-        $otherUser = factory(User::class)->create();
-        $response = $this->get('/dashboard/usuarios/'.$otherUser->id.'/edit');
+        $otherUser = factory(User::class)->create(
+            ['type' => User::APPRAISER_ROLE]
+        );
+        $response = $this->get('/dashboard/usuarios/' . $otherUser->id . '/edit');
         $response->assertStatus(200);
-        $userResponse = $response->getOriginalContent()->user;  
+        $userResponse = $response->getOriginalContent()->user;
         $this->assertEquals($userResponse->id, $otherUser->id);
+
+        $dataToEdit = $otherUser->toArray();
+        $dataToEdit['type'] = User::PRINTER_ROLE;
+
+        $response = $this->patchJson('/dashboard/usuarios/' . $otherUser->id, $dataToEdit);
+        $user = User::where('id', $otherUser->id)->first();
+        $this->assertEquals($user->type, User::PRINTER_ROLE);
+        $response->assertStatus(302);
     }
 
     /**
@@ -131,12 +138,110 @@ class UserTest extends TestCase
             $user
         );
         $otherUser = factory(User::class)->create();
-        $response = $this->get('/dashboard/usuarios/'.$otherUser->id.'/edit');
+        $response = $this->get('/dashboard/usuarios/' . $otherUser->id . '/edit');
         $response->assertStatus(302);
     }
 
+    /**
+     *@test
+     */
+    public function cantEditUserWhenTheEmailIsRepeat()
+    {
+        $user = User::where('id', 1)->first();
+        $this->actingAs(
+            $user
+        );
+        $otherUser = factory(User::class)->create(
+            ['type' => User::APPRAISER_ROLE]
+        );
 
-            /**
+        $dataToEdit = $otherUser->toArray();
+        $dataToEdit['email'] = $user->email;
+
+        $response = $this->patchJson('/dashboard/usuarios/' . $otherUser->id, $dataToEdit);
+        $response->assertStatus(422)
+            ->assertJsonStructure(
+                [
+                    'errors' => [
+                        'email'
+                    ]
+                ]
+            )
+            ->assertJsonFragment([
+                'errors' => [
+                    'email' => [
+                        User::REPEAT_EMAIL
+                    ]
+                ]
+            ]);
+
+        $user = User::findOrFail($otherUser->id);
+        $this->assertNotEquals($dataToEdit['email'], $user->email);
+    }
+
+    /**
+     *@test
+     */
+    public function cantEditUserWhenTheUserTypeIsInvalid()
+    {
+        $user = User::where('id', 1)->first();
+        $this->actingAs(
+            $user
+        );
+        $otherUser = factory(User::class)->create(
+            ['type' => User::APPRAISER_ROLE]
+        );
+
+        $dataToEdit = $otherUser->toArray();
+        $dataToEdit['type'] = 'Invalido';
+
+        $response = $this->patchJson('/dashboard/usuarios/' . $otherUser->id, $dataToEdit);
+        $response->assertStatus(422)
+            ->assertJsonStructure(
+                [
+                    'errors' => [
+                        'type'
+                    ]
+                ]
+            )
+            ->assertJsonFragment([
+                'errors' => [
+                    'type' => [
+                        User::INVALID_TYPE
+                    ]
+                ]
+            ]);
+
+        $user = User::findOrFail($otherUser->id);
+        $this->assertNotEquals($dataToEdit['type'], $user->type);
+    }
+
+
+    /**
+     *@test
+     */
+    public function cantEditUserWhenTheUserIsNotAdmin()
+    {
+        $user = factory(User::class)->create(
+            ['type' => User::APPRAISER_ROLE]
+        );
+        $this->actingAs(
+            $user
+        );
+        $otherUser = factory(User::class)->create(
+            ['type' => User::APPRAISER_ROLE]
+        );
+
+        $dataToEdit = $otherUser->toArray();
+        $dataToEdit['email'] = $user->email;
+
+        $response = $this->patchJson('/dashboard/usuarios/' . $otherUser->id, $dataToEdit);
+        $response->assertStatus(302);
+        
+    }
+
+
+    /**
      *@test
      */
     public function canCreateUser()
@@ -149,7 +254,7 @@ class UserTest extends TestCase
         $response->assertStatus(200);
     }
 
-        /**
+    /**
      *@test
      */
     public function cantCreateUser()
@@ -163,10 +268,9 @@ class UserTest extends TestCase
     }
 
 
-    private function assertThatTheUsersExists(array $usersResponse):void
+    private function assertThatTheUsersExists(array $usersResponse): void
     {
         $users = User::where('type', '!=', User::ADMIN_ROLE)->get();
         $this->assertEquals(count($users), count($usersResponse));
     }
-
 }

@@ -39,14 +39,10 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'email' => [
-                'required', 'email', 'max:255', 'min:3'
-                //            ,'unique:users,email'
-            ],
+            'email' => ['required', 'email', 'max:255', 'min:3'],
             'paternal_surname' => ['required', 'string', 'max:255', 'min:3'],
             'maternal_surname' => ['required', 'string', 'max:255', 'min:3'],
             'phone' => ['required', 'string', 'max:255', 'min:7'],
-
         ];
     }
 
@@ -63,19 +59,19 @@ class UpdateUserRequest extends FormRequest
 
     public function withValidator($validator)
     {
+
         $userTypes = User::USER_TYPES;
         $validator->after(function ($validator) use ($userTypes) {
-            if (!$userTypes[$this->input('type')]) {
-                $validator->errors()->add('type', 'El tipo de usuario no es válido.');
+
+            if (!isset($userTypes[$this->input('type')])) {
+                $validator->errors()->add('type', User::INVALID_TYPE);
             }
 
             $user = User::where('email', $this->input('email'))->first();
 
-            if($user->id!=request()->route('usuario'))
-            {
-                $validator->errors()->add('email', 'El correo está repetido.');
+            if ($user->id != request()->route('usuario')) {
+                $validator->errors()->add('email', User::REPEAT_EMAIL);
             }
-
         });
     }
 }

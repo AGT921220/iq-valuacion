@@ -74,6 +74,11 @@
         <div class="alert alert-warning">{{ session('mensaje') }}</div>
         @endif
 
+        @error('error')
+        <div class="alert alert-danger">
+            <strong>{{ $message }}</strong>
+          </div>
+        @enderror
       </section>
 
       <section class="content">
