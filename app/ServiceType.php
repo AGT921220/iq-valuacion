@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceType extends Model
 {
+    public const INFONAVIT = 1;
+    public const FOVISSSTE = 2;
+    public const DOMAIN_APPRAISAL = 3;
+    public const COMMERCIAL_APPRASAL = 4;
+    public const VALUE_ESTIMATION = 5;
+    public const PLAN = 6;
+
     public const SERVICE_TYPES = [
         'Infonavit',
         'Fovisste',

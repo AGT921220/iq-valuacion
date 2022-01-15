@@ -17,8 +17,8 @@ class CreateServicesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('service_types')->unsigned();
-            $table->foreign('service_types')->references('id')->on('service_types');        
+            $table->integer('service_type')->unsigned();
+            $table->foreign('service_type')->references('id')->on('service_types');        
             $table->integer('appraiser_id')->unsigned();
             $table->foreign('appraiser_id')->references('id')->on('users');
             $table->string('status');

@@ -3,14 +3,9 @@
 namespace App\Http\Controllers\Servicios;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Infonavit\CreateInfonavitRequest;
-use App\Http\Requests\Infonavit\StoreInfonavitRequest;
-use App\Service;
-use App\ServiceType;
-use App\User;
 use Illuminate\Http\Request;
 
-class InfonavitController extends Controller
+class InfonavitDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +15,7 @@ class InfonavitController extends Controller
     public function index()
     {
         //
-        dd(3);
+        dd(1);
     }
 
     /**
@@ -30,18 +25,7 @@ class InfonavitController extends Controller
      */
     public function create()
     {
-        app(CreateInfonavitRequest::class);
-        $userId = auth()->user()->id;
-        $service = Service::where('service_type', ServiceType::INFONAVIT)
-            ->where('user_id', $userId)
-            ->first();
-
-        if ($service) {
-            return redirect('/dashboard/servicios/infonavit/detail/create');
-            dd('EXISTE');
-        }
-        $appraisers = User::where('type', User::APPRAISER_ROLE)->get();
-        return view('dashboard.services.infonavit.create', compact('appraisers'));
+        //
     }
 
     /**
@@ -50,16 +34,9 @@ class InfonavitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreInfonavitRequest $request)
+    public function store(Request $request)
     {
-        $service = new Service();
-        $service->user_id=auth()->user()->id;
-        $service->service_type= ServiceType::INFONAVIT;
-        $service->appraiser_id=$request->input('appraiser_id');
-        $service->status = Service::STATUS_CREATED;
-        $service->save();
-        return back()->with('success', Service::SERVICE_CREATE_SUCCESSFUL);
-
+        //
     }
 
     /**
@@ -70,8 +47,6 @@ class InfonavitController extends Controller
      */
     public function show($id)
     {
-        dd($id);
-
         //
     }
 
