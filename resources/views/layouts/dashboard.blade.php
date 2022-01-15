@@ -11,31 +11,43 @@
   <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="/dist/css/AdminLTE.css">
   <link rel="stylesheet" href="/dist/css/skins/_all-skins.css">
-  {{-- <link rel="stylesheet" href="/bower_components/morris.js/morris.css"> --}}
+  {{--
+  <link rel="stylesheet" href="/bower_components/morris.js/morris.css"> --}}
   <link rel="stylesheet" href="/bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
 
-    <header class="main-header">
-
+    <header class="main-header" style="    display: flex;
+    justify-content: space-between;
+    background-color: #418dbc;">
+      <div style="">
+        {{-- <img src="{{'/images/logo.jpeg'}}" style="width: 30px; height:30px" alt=""> --}}
+        <a href="/home" style="color:white">Inicio</a>
+      </div>
       <nav class="navbar navbar-static-top">
-
+     
         <div class="navbar-custom-menu">
+
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ (auth()->user()->user_profile) ? auth()->user()->user_profile:'/images/profile-empty.png' }}" class="user-image" alt="User Image">
+                <img
+                  src="{{ (auth()->user()->user_profile) ? auth()->user()->user_profile:'/images/profile-empty.png' }}"
+                  class="user-image" alt="User Image">
                 <span class="hidden-xs">{{ Auth::user()->name }} </span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
-                  <img src="{{ (auth()->user()->user_profile) ? auth()->user()->user_profile:'/images/profile-empty.png' }}" class="user-image" alt="User Image">
+                  <img
+                    src="{{ (auth()->user()->user_profile) ? auth()->user()->user_profile:'/images/profile-empty.png' }}"
+                    class="user-image" alt="User Image">
                   <p>{{ Auth::user()->name }}</p>
                 </li>
 
@@ -76,8 +88,8 @@
 
         @error('error')
         <div class="alert alert-danger">
-            <strong>{{ $message }}</strong>
-          </div>
+          <strong>{{ $message }}</strong>
+        </div>
         @enderror
       </section>
 
@@ -90,11 +102,13 @@
     </div>
 
 
+
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
       </div>
       <strong>Copyright &copy; 2022 <a>IQ Valuación</a>.</strong>
     </footer>
+
   </div>
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
