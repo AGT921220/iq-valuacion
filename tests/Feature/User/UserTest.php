@@ -79,10 +79,9 @@ class UserTest extends TestCase
      */
     public function cantShowUserIfNotExist()
     {
-        $this->beginARandomUser();
-        $user = factory(User::class)->create();
-        $userId = $user->id + 1;
-        $response = $this->get('/dashboard/usuarios/' . $userId);
+        $this->beginARootUser();
+        $userId = 0;
+        $response = $this->getJson('/dashboard/usuarios/' . $userId);
         $response->assertStatus(302);
     }
 

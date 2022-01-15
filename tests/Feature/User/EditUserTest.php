@@ -3,6 +3,7 @@
 namespace Tests\Feature\User;
 
 use App\User;
+use Illuminate\Http\UploadedFile;
 use PHPUnit\Framework\Test;
 use Tests\TestCase;
 
@@ -33,6 +34,32 @@ class EditUserTest extends TestCase
         $this->assertEquals($user->type, User::PRINTER_ROLE);
         $response->assertStatus(302);
     }
+
+        /**
+     *@test
+     */
+    public function canEditUserWithPhoto()
+    {
+
+        $this->beginARootUser();
+        $user = factory(User::class)->create(
+            ['type' => User::APPRAISER_ROLE]
+        );
+        $response = $this->get('/dashboard/usuarios/' . $user->id . '/edit');
+        $response->assertStatus(200);
+        $userResponse = $response->getOriginalContent()->user;
+        $this->assertEquals($userResponse->id, $user->id);
+
+        $dataToEdit = $user->toArray();
+        $dataToEdit['user_profile'] = UploadedFile::fake()->create('fakefile.jpg', 100);
+        $dataToEdit['type'] = User::PRINTER_ROLE;
+        
+        $response = $this->patchJson('/dashboard/usuarios/' . $user->id, $dataToEdit);
+        $user = User::where('id', $user->id)->first();
+        $this->assertEquals($user->type, User::PRINTER_ROLE);
+        $response->assertStatus(302);
+    }
+
 
     /**
      *@test

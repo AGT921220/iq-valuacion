@@ -52,8 +52,8 @@ class UsersController extends Controller
         $foto = '/images/profile-empty.png';
         $foto = null;
 
-        if ($request->input('user_profile')) {
-            $file = $request->input('user_profile');
+        if ($request->user_profile) {
+            $file = $request->user_profile;
             $filename = time() . $file->getClientOriginalName();
             $file->move(public_path() . '/images/profiles', $filename);
             $foto = '/images/profiles/' . $filename;
@@ -68,10 +68,9 @@ class UsersController extends Controller
         $user->phone = $request->input('phone');
         $user->password = Hash::make($request->input('password'));
         $user->user_profile = $foto;
-        if ($user->save()) {
+        $user->save();
             return back()->with('success', User::USER_CREATE_SUCCESSFUL);
-        }
-        return back()->with('error', User::USER_CREATE_ERROR);
+        // return back()->with('error', User::USER_CREATE_ERROR);
     }
 
     public function update(UpdateUserRequest $request)
@@ -96,10 +95,9 @@ class UsersController extends Controller
         $user->maternal_surname = $request->input('maternal_surname');
         $user->phone = $request->input('phone');
         $user->password = Hash::make($request->input('password'));
-        if ($user->save()) {
+        $user->save();
             return back()->with('success', User::USER_UPDATE_SUCCESSFUL);
-        }
-        return back()->with('error', User::USER_UPDATE_ERROR);
+        // return back()->with('error', User::USER_UPDATE_ERROR);
     }
 
     public function destroy($id)
@@ -107,11 +105,9 @@ class UsersController extends Controller
         app(DestroyUserRequest::class);
 
         $user = User::findOrFail($id);
-
-        if($user->delete()){
-            return back()->with('success', User::USER_CREATE_SUCCESSFUL);
-        }
-        return back()->with('error', User::USER_CREATE_ERROR);
+        $user->delete();
+            return back()->with('success', User::USER_CREATE_SUCCESSFUL);        
+        // return back()->with('error', User::USER_CREATE_ERROR);
     }
 
 }

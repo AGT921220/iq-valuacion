@@ -3,6 +3,7 @@
 namespace Tests\Feature\User;
 
 use App\User;
+use Illuminate\Http\UploadedFile;
 use PHPUnit\Framework\Test;
 use Tests\TestCase;
 
@@ -23,6 +24,23 @@ class CreateUserTest extends TestCase
         $response->assertStatus(302);
         $this->assertTrue(User::where('email', $userData['email'])->exists());
     }
+
+    /**
+     *@test
+     */
+    public function canCreateUserWithPhoto()
+    {
+
+        $this->beginARootUser();
+        $response = $this->get('/dashboard/usuarios/create');
+        $response->assertStatus(200);
+        $userData = $this->getUserData();
+        $userData['user_profile'] = UploadedFile::fake()->create('fakefile.jpg', 100);
+        $response = $this->post('/dashboard/usuarios', $userData);
+        $response->assertStatus(302);
+        $this->assertTrue(User::where('email', $userData['email'])->exists());
+    }
+
 
     /**
      *@test
