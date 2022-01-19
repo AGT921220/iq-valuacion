@@ -18,7 +18,7 @@ justify-content: space-around;"
 >
 
     <a href="/dashboard/servicios/infonavit/create" class="btn btn-success">Infonavit</a>
-    <a href="/home" class="btn btn-success">Fovissste</a>
+    <a href="/dashboard/servicios/fovissste/create" class="btn btn-success">Fovissste</a>
     <a href="/home" class="btn btn-success">Avalúo de Traslado de dominio</a>
     <a href="/home" class="btn btn-success">Avalúo comercial</a>
     <a href="/home" class="btn btn-success">Estimación de valor</a>

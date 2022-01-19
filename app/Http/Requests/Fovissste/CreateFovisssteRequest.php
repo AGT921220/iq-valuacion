@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Infonavit;
+namespace App\Http\Requests\Fovissste;
 
-use App\Service;
-use App\ServiceType;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreInfonavitRequest extends FormRequest
+class CreateFovisssteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -47,17 +45,8 @@ class StoreInfonavitRequest extends FormRequest
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
-
-            if (!User::where('id', $this->input('appraiser_id'))->exists()) {
-                $validator->errors()->add('error', 'El perito seleccionado ha sido eliminado.');
-            }
-
-
-            if (Service::whereIn('status', [Service::STATUS_CREATED])
-                ->where('service_type', ServiceType::INFONAVIT)
-                ->where('user_id', $this->user->id)->exists()
-            ) {
-                $validator->errors()->add('error', 'Ya existe un servicio infonavit creado.');
+            if (!User::where('type', User::APPRAISER_ROLE)->exists()) {
+                $validator->errors()->add('error', 'No existen Peritos registrados');
             }
         });
     }

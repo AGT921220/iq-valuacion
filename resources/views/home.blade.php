@@ -13,7 +13,7 @@
 <h1>Hola {{auth()->user()->name}}</h1>
 
 @if(auth()->user()->type=='client')
-@include('partials.clients.footer')
+@include('partials.clients.services')
 @include('partials.clients.activity')
 @endif
 

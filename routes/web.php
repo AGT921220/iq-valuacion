@@ -19,8 +19,12 @@ Route::prefix('dashboard')
 
         Route::prefix('servicios')
             ->group(function () {
+                //INFONAVIT
                 Route::resource('/infonavit', 'Servicios\InfonavitController');
-                Route::resource('/infonavit/detail', 'Servicios\InfonavitDetailController');
+                Route::resource('/infonavit/detalle', 'Servicios\InfonavitDetailController');
+                //FOVISSSTE
+                Route::resource('/fovissste', 'Servicios\FovisssteController');
+
             });
         Route::get('{locale}', function ($locale) {
             return redirect('/home');

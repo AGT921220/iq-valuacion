@@ -3,56 +3,34 @@
 namespace App\Http\Controllers\Servicios;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Infonavit\CreateInfonavitRequest;
-use App\Http\Requests\Infonavit\StoreInfonavitRequest;
+use App\Http\Requests\Fovissste\CreateFovisssteRequest;
+use App\Http\Requests\Fovissste\StoreFovisssteRequest;
 use App\Service;
 use App\ServiceType;
 use App\User;
-use Illuminate\Http\Request;
 
-class InfonavitController extends Controller
+class FovisssteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function index()
-    // {
-    //     //
-    // }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        app(CreateInfonavitRequest::class);
+        app(CreateFovisssteRequest::class);
         $userId = auth()->user()->id;
-        $service = Service::where('service_type', ServiceType::INFONAVIT)
+        $service = Service::where('service_type', ServiceType::FOVISSSTE)
             ->where('user_id', $userId)
             ->first();
 
         if ($service) {
-            return redirect('/dashboard/servicios/infonavit/detalle/create');
+            return redirect('/dashboard/servicios/fovissste/detalle/create');
         }
         $appraisers = User::where('type', User::APPRAISER_ROLE)->get();
-        return view('dashboard.services.infonavit.create', compact('appraisers'));
+        return view('dashboard.services.fovissste.create', compact('appraisers'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreInfonavitRequest $request)
+    public function store(StoreFovisssteRequest $request)
     {
         $service = new Service();
         $service->user_id=auth()->user()->id;
-        $service->service_type= ServiceType::INFONAVIT;
+        $service->service_type= ServiceType::FOVISSSTE;
         $service->appraiser_id=$request->input('appraiser_id');
         $service->status = Service::STATUS_CREATED;
         $service->save();
