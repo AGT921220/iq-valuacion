@@ -53,7 +53,8 @@ class StoreInfonavitRequest extends FormRequest
             }
 
 
-            if (Service::whereIn('status', [Service::STATUS_CREATED])
+            if (
+                Service::whereIn('status', [Service::STATUS_CREATED])
                 ->where('service_type', ServiceType::INFONAVIT)
                 ->where('user_id', $this->user->id)->exists()
             ) {

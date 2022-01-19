@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\AvaluoTDC;
 
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditUserRequest extends FormRequest
+class CreateAvaluoTDCRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,8 @@ class EditUserRequest extends FormRequest
 
     public function authorize()
     {
-        if ($this->user->type == User::ADMIN_ROLE) {
+
+        if ($this->user->type == User::CLIENT_ROLE) {
             return true;
         }
 
@@ -39,5 +40,14 @@ class EditUserRequest extends FormRequest
         return [
             //
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if (!User::where('type', User::APPRAISER_ROLE)->exists()) {
+                $validator->errors()->add('error', 'No existen Peritos registrados');
+            }
+        });
     }
 }

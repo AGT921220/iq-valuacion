@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-
-
     public function index()
     {
         app(IndexUserRequest::class);
@@ -43,7 +41,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $userTypes = User::USER_TYPES;
 
-        return view('dashboard.users.edit', compact('user','userTypes'));
+        return view('dashboard.users.edit', compact('user', 'userTypes'));
     }
 
     public function store(StoreUserRequest $request)
@@ -69,7 +67,7 @@ class UsersController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->user_profile = $foto;
         $user->save();
-            return back()->with('success', User::USER_CREATE_SUCCESSFUL);
+        return back()->with('success', User::USER_CREATE_SUCCESSFUL);
         // return back()->with('error', User::USER_CREATE_ERROR);
     }
 
@@ -85,7 +83,6 @@ class UsersController extends Controller
             $file->move(public_path() . '/images/profiles', $filename);
             $foto = '/images/profiles/' . $filename;
             $user->user_profile = $foto;
-
         }
 
         $user->name = $request->input('name');
@@ -96,7 +93,7 @@ class UsersController extends Controller
         $user->phone = $request->input('phone');
         $user->password = Hash::make($request->input('password'));
         $user->save();
-            return back()->with('success', User::USER_UPDATE_SUCCESSFUL);
+        return back()->with('success', User::USER_UPDATE_SUCCESSFUL);
         // return back()->with('error', User::USER_UPDATE_ERROR);
     }
 
@@ -106,8 +103,7 @@ class UsersController extends Controller
 
         $user = User::findOrFail($id);
         $user->delete();
-            return back()->with('success', User::USER_CREATE_SUCCESSFUL);        
+        return back()->with('success', User::USER_CREATE_SUCCESSFUL);
         // return back()->with('error', User::USER_CREATE_ERROR);
     }
-
 }

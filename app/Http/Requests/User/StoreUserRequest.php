@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
         if ($this->user->type == User::ADMIN_ROLE) {
             return true;
         }
-        
+
         return false;
     }
 
@@ -39,7 +39,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'email' => ['required', 'email', 'max:255', 'min:3','unique:users,email'],
+            'email' => ['required', 'email', 'max:255', 'min:3', 'unique:users,email'],
             'paternal_surname' => ['required', 'string', 'max:255', 'min:3'],
             'maternal_surname' => ['required', 'string', 'max:255', 'min:3'],
             'phone' => ['required', 'string', 'max:255', 'min:7'],
@@ -67,7 +67,7 @@ class StoreUserRequest extends FormRequest
             }
 
             if ($this->input('password') !== $this->input('password_confirmation')) {
-                $validator->errors()->add('password',User::PASSWORDS_NOT_EQUALS);
+                $validator->errors()->add('password', User::PASSWORDS_NOT_EQUALS);
             }
         });
     }

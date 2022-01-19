@@ -20,9 +20,9 @@ class User extends Authenticatable
 
     public const USER_TYPES =
     [
-        self::REVIEWER_ROLE=>'Revisador',
-        self::PRINTER_ROLE=>'Dibujante',
-        self::APPRAISER_ROLE=>'Perito Valuador',
+        self::REVIEWER_ROLE => 'Revisador',
+        self::PRINTER_ROLE => 'Dibujante',
+        self::APPRAISER_ROLE => 'Perito Valuador',
     ];
 
     public const USER_CREATE_SUCCESSFUL = 'El usuario se creó con éxito';

@@ -22,10 +22,10 @@ class IndexUserRequest extends FormRequest
 
     public function authorize()
     {
-        if ($this->user->type==User::ADMIN_ROLE) {
+        if ($this->user->type == User::ADMIN_ROLE) {
             return true;
         }
-       
+
         return false;
     }
 

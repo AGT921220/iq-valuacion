@@ -8,8 +8,8 @@ class ServiceType extends Model
 {
     public const INFONAVIT = 1;
     public const FOVISSSTE = 2;
-    public const DOMAIN_APPRAISAL = 3;
-    public const COMMERCIAL_APPRASAL = 4;
+    public const AVALUO_TDC = 3;
+    public const AVALUO_COMERCIAL = 4;
     public const VALUE_ESTIMATION = 5;
     public const PLAN = 6;
 
@@ -30,5 +30,4 @@ class ServiceType extends Model
     //     'value_estimation',
     //     'cadastral_plan'
     // ];
-
 }

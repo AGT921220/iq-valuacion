@@ -24,6 +24,13 @@ Route::prefix('dashboard')
                 Route::resource('/infonavit/detalle', 'Servicios\InfonavitDetailController');
                 //FOVISSSTE
                 Route::resource('/fovissste', 'Servicios\FovisssteController');
+                Route::resource('/fovissste/detalle', 'Servicios\FovisssteDetailController');
+                //AVALUO TDC
+                Route::resource('/avaluo-traslado-de-dominio', 'Servicios\AvaluoTDCController');
+                Route::resource('/avaluo-traslado-de-dominio/detalle', 'Servicios\AvaluoTDCDetailController');
+                //AVALUO COMERCIAL
+                Route::resource('/avaluo-comercial', 'Servicios\AvaluoComercialController');
+                Route::resource('/avaluo-comercial/detalle', 'Servicios\AvaluoComercialDetailController');
 
             });
         Route::get('{locale}', function ($locale) {

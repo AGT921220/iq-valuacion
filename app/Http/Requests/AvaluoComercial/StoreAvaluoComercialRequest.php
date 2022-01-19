@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Fovissste;
+namespace App\Http\Requests\AvaluoComercial;
 
 use App\Service;
 use App\ServiceType;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFovisssteRequest extends FormRequest
+class StoreAvaluoComercialRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -55,10 +55,10 @@ class StoreFovisssteRequest extends FormRequest
 
             if (
                 Service::whereIn('status', [Service::STATUS_CREATED])
-                ->where('service_type', ServiceType::FOVISSSTE)
+                ->where('service_type', ServiceType::AVALUO_COMERCIAL)
                 ->where('user_id', $this->user->id)->exists()
             ) {
-                $validator->errors()->add('error', 'Ya existe un servicio fovissste creado.');
+                $validator->errors()->add('error', 'Ya existe un servicio Avaluo Comercial creado.');
             }
         });
     }
