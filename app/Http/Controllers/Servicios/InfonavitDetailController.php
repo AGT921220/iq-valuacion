@@ -10,4 +10,8 @@ class InfonavitDetailController extends Controller
     {
         dd(1);
     }
+    public function create()
+    {
+        return 'Infonavit';
+    }
 }

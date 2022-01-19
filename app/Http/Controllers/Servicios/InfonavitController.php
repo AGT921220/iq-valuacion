@@ -8,7 +8,6 @@ use App\Http\Requests\Infonavit\StoreInfonavitRequest;
 use App\Service;
 use App\ServiceType;
 use App\User;
-use Illuminate\Http\Request;
 
 class InfonavitController extends Controller
 {

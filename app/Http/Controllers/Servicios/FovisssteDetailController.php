@@ -25,7 +25,7 @@ class FovisssteDetailController extends Controller
      */
     public function create()
     {
-        //
+        return 'Fovissste';
     }
 
     /**

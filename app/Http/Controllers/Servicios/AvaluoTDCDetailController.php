@@ -7,14 +7,8 @@ use Illuminate\Http\Request;
 
 class AvaluoTDCDetailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
         dd(1);
     }
 
@@ -25,7 +19,7 @@ class AvaluoTDCDetailController extends Controller
      */
     public function create()
     {
-        //
+        return 'Avaluo TDC';
     }
 
     /**
