@@ -31,7 +31,12 @@ Route::prefix('dashboard')
                 //AVALUO COMERCIAL
                 Route::resource('/avaluo-comercial', 'Servicios\AvaluoComercialController');
                 Route::resource('/avaluo-comercial/detalle', 'Servicios\AvaluoComercialDetailController');
-
+                //ESTIMACION DE VALOR
+                Route::resource('/estimacion-de-valor', 'Servicios\EstimacionController');
+                Route::resource('/estimacion-de-valor/detalle', 'Servicios\EstimacionDetailController');
+                //PLANO CATASTRAL
+                Route::resource('/plano-catastral', 'Servicios\PlanoController');
+                Route::resource('/plano-catastral/detalle', 'Servicios\PlanoDetailController');
             });
         Route::get('{locale}', function ($locale) {
             return redirect('/home');
