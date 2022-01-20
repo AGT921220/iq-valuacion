@@ -12,6 +12,6 @@ class InfonavitDetailController extends Controller
     }
     public function create()
     {
-        return 'Infonavit';
+        return view("dashboard.services.infonavit.detalles.create");
     }
 }
