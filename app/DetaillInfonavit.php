@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class InfonavitDetalle extends Model
+class DetaillInfonavit extends Model
 {
     protected $fillable = [
         'solicitante_nombre',
@@ -44,9 +44,14 @@ class InfonavitDetalle extends Model
         'vivienda_interior',
         'vivienda_colonia',
         'calles_referencia',
+        'calle_uno',
+        'calle_dos',
         'vivienda_municipio',
         'vivienda_estado',
         'vivienda_cp',
+        'vivienda_manzana',
+        'vivienda_lote',
+        'vivienda_condominio',
         'vivienda_edificio',
         'vivienda_nivel',
        'vivienda_entrada',
@@ -61,6 +66,7 @@ class InfonavitDetalle extends Model
         'escritura_libro',
         'confirmacion_visita_nombre',
         'confirmacion_visita_celular',
-        'confirmacion_visita_correo'
+        'confirmacion_visita_correo',
+        'user_id'
     ];
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetaillsInfonativTable extends Migration
+class CreateDetaillInfonavitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDetaillsInfonativTable extends Migration
      */
     public function up()
     {
-        Schema::create('detaills_infonativ', function (Blueprint $table) {
+        Schema::create('detaill_infonavits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('solicitante_nombre');
             $table->string('solicitante_ap');
@@ -35,7 +35,6 @@ class CreateDetaillsInfonativTable extends Migration
             $table->string('vendedor_am');
             $table->string('vendedor_rfc');
             $table->string('vendedor_curp');
-            $table->string('vendedor_nss');
             $table->string('vendedor_telefono');
             $table->string('vendedor_email');
             $table->string('vendedor_domicilio_calle');
@@ -52,9 +51,14 @@ class CreateDetaillsInfonativTable extends Migration
             $table->string('vivienda_interior');
             $table->string('vivienda_colonia');
             $table->string('calles_referencia')->nullable();
+            $table->string('calle_uno')->nullable();
+            $table->string('calle_dos')->nullable();
             $table->string('vivienda_municipio');
             $table->string('vivienda_estado');
             $table->string('vivienda_cp');
+            $table->string('vivienda_manzana');
+            $table->string('vivienda_lote');
+            $table->string('vivienda_condominio');
             $table->string('vivienda_edificio')->nullable();
             $table->string('vivienda_nivel')->nullable();
             $table->string('vivienda_entrada')->nullable();
@@ -70,6 +74,8 @@ class CreateDetaillsInfonativTable extends Migration
             $table->string('confirmacion_visita_nombre');
             $table->string('confirmacion_visita_celular');
             $table->string('confirmacion_visita_correo');
+            $table->integer('user_id')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });
@@ -82,6 +88,6 @@ class CreateDetaillsInfonativTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detaills_infonativ');
+        Schema::dropIfExists('detaill_infonavits');
     }
 }
