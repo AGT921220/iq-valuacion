@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
@@ -25,11 +26,10 @@ $factory->define(User::class, function (Faker $faker) {
         'maternal_surname' => $faker->lastName,
         'phone' => $faker->phoneNumber,
         'email_verified_at' => now(),
-        'type'=>User::CLIENT_ROLE,
-        'password' => function(){
+        'type' => User::CLIENT_ROLE,
+        'password' => function () {
             return Hash::make('agt123');
         },
         'remember_token' => Str::random(10),
     ];
-
 });
