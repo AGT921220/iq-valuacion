@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Servicios;
 
 use App\DetaillInfonavit;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Infonavit\CreateInfonavitDetailRequest;
+use App\Http\Requests\Infonavit\CreateInfonavitRequest;
+use App\InfonavitDetail;
 use Illuminate\Http\Request;
 
 class InfonavitDetailController extends Controller
@@ -14,11 +17,11 @@ class InfonavitDetailController extends Controller
     // }
     public function create()
     {
-
+        app(CreateInfonavitRequest::class);
         return view("dashboard.services.infonavit.detalles.create");
     }
 
-    public function store(Request $request)
+    public function store(CreateInfonavitDetailRequest $request)
     {
 
         $userId = auth()->user()->id;
