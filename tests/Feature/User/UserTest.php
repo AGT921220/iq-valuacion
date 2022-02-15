@@ -14,7 +14,7 @@ class UserTest extends TestCase
      */
     public function canIndexUsers()
     {
-        
+
         $this->beginARootUser();
         factory(User::class, 10)->create();
         $response = $this->get('/dashboard/usuarios');
@@ -90,5 +90,4 @@ class UserTest extends TestCase
         $users = User::where('type', '!=', User::ADMIN_ROLE)->get();
         $this->assertEquals(count($users), count($usersResponse));
     }
-
 }
