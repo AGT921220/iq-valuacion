@@ -20,10 +20,10 @@ class UsersController extends Controller
         $users = User::where('type', '!=', User::ADMIN_ROLE)->get();
         return view('dashboard.users.index', compact('users'));
     }
-    public function show($id)
+    public function show($userId)
     {
         app(ShowUserRequest::class);
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($userId);
         return view('dashboard.users.show', compact('user'));
     }
 
@@ -35,10 +35,10 @@ class UsersController extends Controller
         return view('dashboard.users.create', compact('userTypes'));
     }
 
-    public function edit($id)
+    public function edit($userId)
     {
         app(EditUserRequest::class);
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($userId);
         $userTypes = User::USER_TYPES;
 
         return view('dashboard.users.edit', compact('user', 'userTypes'));
@@ -46,7 +46,6 @@ class UsersController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-
         $foto = '/images/profile-empty.png';
         $foto = null;
 
@@ -73,7 +72,6 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request)
     {
-
         $user = User::findOrFail($request->route('usuario'));
 
 
@@ -97,11 +95,11 @@ class UsersController extends Controller
         // return back()->with('error', User::USER_UPDATE_ERROR);
     }
 
-    public function destroy($id)
+    public function destroy($userId)
     {
         app(DestroyUserRequest::class);
 
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($userId);
         $user->delete();
         return back()->with('success', User::USER_CREATE_SUCCESSFUL);
         // return back()->with('error', User::USER_CREATE_ERROR);

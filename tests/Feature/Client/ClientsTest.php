@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class ClientsTest extends TestCase
 {
-
     private const CLIENT_PASSWORD = 'password';
 
     /**
@@ -50,8 +49,8 @@ class ClientsTest extends TestCase
             ]
         );
         $loginData = [
-            'email'=> $client['email'],
-            'password'=>self::CLIENT_PASSWORD
+            'email' => $client['email'],
+            'password' => self::CLIENT_PASSWORD
         ];
 
         $response = $this->callLogin($loginData);
@@ -73,8 +72,8 @@ class ClientsTest extends TestCase
             ]
         );
         $loginData = [
-            'email'=> $client['email'],
-            'password'=>self::CLIENT_PASSWORD.'1'
+            'email' => $client['email'],
+            'password' => self::CLIENT_PASSWORD . '1'
         ];
 
         $response = $this->callLogin($loginData);
@@ -83,11 +82,11 @@ class ClientsTest extends TestCase
     }
 
 
-  
+
     private function assertCreateUser(array $userData): void
     {
 
-        $this->assertTrue($user = User::where('type', User::CLIENT_ROLE)
+        $this->assertTrue(User::where('type', User::CLIENT_ROLE)
             ->where('email', $userData['email'])
             ->where('name', $userData['name'])
             ->exists());
@@ -98,10 +97,9 @@ class ClientsTest extends TestCase
         return $this->postJson('register', $userData);
     }
 
-    private function callLogin(array $loginData):TestResponse
+    private function callLogin(array $loginData): TestResponse
     {
         return $this->postJson('login', $loginData);
-
     }
 
     private function getUserData(): array
