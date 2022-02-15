@@ -1,5 +1,7 @@
 include .env
 
+alias:
+	@alias phpunit='vendor/bin/phpunit';
 example:
 	@echo ${DB_DATABASE}_testing;
 test:
