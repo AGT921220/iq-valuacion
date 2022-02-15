@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DetaillInfonavit extends Model
+class InfonavitDetail extends Model
 {
     protected $fillable = [
         'solicitante_nombre',

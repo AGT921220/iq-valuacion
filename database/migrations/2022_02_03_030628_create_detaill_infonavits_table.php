@@ -13,7 +13,7 @@ class CreateDetaillInfonavitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('detaill_infonavits', function (Blueprint $table) {
+        Schema::create('infonavit_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('solicitante_nombre');
             $table->string('solicitante_ap');
